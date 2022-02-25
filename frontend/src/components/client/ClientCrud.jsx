@@ -19,6 +19,12 @@ export default class ClientCrud extends Component {
   
   state = { ...initialState }
 
+  componentWillMount() {
+    axios(baseUrl).then(resp => {
+      this.setState({ list: resp.data })
+    })
+  }
+
   clear() {
     this.setState( {client: initialState.client} )
   }
@@ -113,11 +119,67 @@ export default class ClientCrud extends Component {
       </div>
     )
   }
+
+  load(client) {
+    this.setState({ client });
+  }
+
+  remove(client) {
+    axios.delete(`${baseUrl}/${client.id}`).then(resp => {
+      const list = this.state.list.filter(c => c !== client)
+      this.setState({ list });
+    })
+  }
+
+  renderTable() {
+    return (
+      <table className="table mt-4">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>CNPJ</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.renderRows()}
+        </tbody>
+      </table>
+    )
+  }
+
+  renderRows() {
+    return this.state.list.map(client => {
+      return (
+        <tr key={client.id}>
+          <td>{client.id}</td>
+          <td>{client.name}</td>
+          <td>{client.phone}</td>
+          <td>{client.email}</td>
+          <td>{client.cnpj}</td>
+          <td>
+            <button className="btn btn-warning"
+              onClick={() => this.load(client)}>
+              <i className="fa fa-pencil"></i>
+            </button>
+            <button className="btn btn-danger ml-2"
+              onClick={() => this.remove(client)}>
+              <i className="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      )
+    })
+  }
   
-  render() {
+  render() {    
     return (
       <Main {...headerProps}>
         {this.renderForm()}
+        {this.renderTable()}
       </Main>
     )
   }
