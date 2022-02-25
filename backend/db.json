@@ -1,0 +1,18 @@
+{
+  "clients": [
+    {
+      "name": "Bill Gates",
+      "phone": "+44 16 555-8352",
+      "email": "billgates@microsoft.com",
+      "cnpj": "03.778.130/0001-48",
+      "id": 1
+    },
+    {
+      "name": "Steve Jobs",
+      "phone": "+44 16 555-9090",
+      "email": "stevejobs@apple.com",
+      "cnpj": "04.779.131/0002-49",
+      "id": 2
+    }
+  ]
+}

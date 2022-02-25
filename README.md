@@ -1,6 +1,10 @@
 Kassel Labs - Frontend Test
 
 # Pré-requisitos: instalação de dependências
+1. Para utilizar o comando npm, é necessário ter o nodejs instalado.
+https://nodejs.org/en/download/
+
+2. Instalando dependências
 ```
 $ cd backend
 $ npm install
