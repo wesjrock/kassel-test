@@ -19,16 +19,23 @@ export default class ClientCrud extends Component {
   
   state = { ...initialState }
 
+  /* componentWillMount() é chamado antes de render() para fazer uma requisição GET com a url do backend
+  *  e obter como resposta do webservice (json-server) em resp.data a lista de clientes armazenados em db.json;
+  *  Em seguida o estado do componente é setado com a lista de clientes */
   componentWillMount() {
     axios(baseUrl).then(resp => {
       this.setState({ list: resp.data })
     })
   }
 
+  // clear() limpa o formulário
   clear() {
     this.setState( {client: initialState.client} )
   }
 
+  /* save() cadastra um novo cliente através da requisição POST ou faz alterações através de PUT
+  *  resp.data possui o cliente que será incluído ou alterado
+  *  Em seguida atualiza a lista de clientes e limpa o formulário */
   save() {
     const client = this.state.client;
     const method = client.id ? 'put' : 'post';
@@ -36,7 +43,7 @@ export default class ClientCrud extends Component {
     axios[method](url, client)
       .then(resp => {
         const list = this.getUpdatedList(resp.data);
-        this.setState({ client: initialState.client, list})
+        this.setState({ client: initialState.client, list});
       })
   }
 
@@ -46,6 +53,7 @@ export default class ClientCrud extends Component {
     return list;
   }
 
+  // updateField() atualiza os campos do formulário
   updateField(event) {
     const client = { ...this.state.client }
     client[event.target.name] = event.target.value;
@@ -120,10 +128,12 @@ export default class ClientCrud extends Component {
     )
   }
 
+  // load() carrega um cliente para quando for realizar Alteração
   load(client) {
     this.setState({ client });
   }
 
+  // remove() faz uma requisição DELETE para remover um cliente
   remove(client) {
     axios.delete(`${baseUrl}/${client.id}`).then(resp => {
       const list = this.state.list.filter(c => c !== client)
