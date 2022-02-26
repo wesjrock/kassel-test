@@ -20,18 +20,18 @@
       "title": "Star Wars",
       "briefing": "video de 2 minutos inspirado em Star Wars",
       "price": "R$ 200",
-      "delivery-date": "01/03/2022",
-      "status": "pendente",
-      "clientId": 1,
+      "delivery_date": "01/03/2022",
+      "status": "Pendente",
+      "client_id": 1,
       "id": 1
     },
     {
       "title": "Game of Thrones",
       "briefing": "video de 2 minutos inspirado em Game of Thrones", 
       "price": "R$ 200",
-      "delivery-date": "02/04/2022",
-      "status": "pendente",
-      "clientId": 1,
+      "delivery_date": "02/04/2022",
+      "status": "Pendente",
+      "client_id": 1,
       "id": 2
     }
   ]  
