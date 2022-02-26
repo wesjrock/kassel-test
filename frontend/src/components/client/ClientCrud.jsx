@@ -58,7 +58,7 @@ export default class ClientCrud extends Component {
         <div className="row">          
           <div className="col-12 col-md-6">
             <div className="form-group">
-              <label>Nome</label>
+              <label><b>Nome</b></label>
               <input type="text" className="form-control"
                 name="name"
                 value={this.state.client.name}
@@ -69,18 +69,18 @@ export default class ClientCrud extends Component {
 
           <div className="col-12 col-md-6">
             <div className="form-group">
-              <label>Telefone</label>
+              <label><b>CNPJ</b></label>
               <input type="text" className="form-control"
-                name="phone"
-                value={this.state.client.phone}
+                name="cnpj"
+                value={this.state.client.cnpj}
                 onChange={e => this.updateField(e)}
-                placeholder="Digite o telefone:" />
+                placeholder="Digite o CNPJ:" />
             </div>
           </div>
 
           <div className="col-12 col-md-6">
             <div className="form-group">
-              <label>E-mail</label>
+              <label><b>E-mail</b></label>
               <input type="text" className="form-control"
                 name="email"
                 value={this.state.client.email}
@@ -91,14 +91,14 @@ export default class ClientCrud extends Component {
 
           <div className="col-12 col-md-6">
             <div className="form-group">
-              <label>CNPJ</label>
+              <label><b>Telefone</b></label>
               <input type="text" className="form-control"
-                name="cnpj"
-                value={this.state.client.cnpj}
+                name="phone"
+                value={this.state.client.phone}
                 onChange={e => this.updateField(e)}
-                placeholder="Digite o CNPJ:" />
+                placeholder="Digite o telefone:" />
             </div>
-          </div>
+          </div>   
         </div>
 
         <hr />
@@ -138,9 +138,9 @@ export default class ClientCrud extends Component {
           <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Telefone</th>
-            <th>E-mail</th>
             <th>CNPJ</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -157,9 +157,9 @@ export default class ClientCrud extends Component {
         <tr key={client.id}>
           <td>{client.id}</td>
           <td>{client.name}</td>
-          <td>{client.phone}</td>
-          <td>{client.email}</td>
           <td>{client.cnpj}</td>
+          <td>{client.email}</td>
+          <td>{client.phone}</td>
           <td>
             <button className="btn btn-warning"
               onClick={() => this.load(client)}>
