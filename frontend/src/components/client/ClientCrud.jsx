@@ -33,18 +33,27 @@ export default class ClientCrud extends Component {
     this.setState( {client: initialState.client} )
   }
 
+  formVerify(client) {
+    if((client.name != "") && (client.cnpj != "") && (client.email != "") && (client.phone != "")){
+      return true;
+    }
+    return false;
+  }
+
   /* save() cadastra um novo cliente através da requisição POST ou faz alterações através de PUT
   *  resp.data possui o cliente que será incluído ou alterado
   *  Em seguida atualiza a lista de clientes e limpa o formulário */
   save() {
     const client = this.state.client;
-    const method = client.id ? 'put' : 'post';
-    const url = client.id ? `${baseUrl}/${client.id}` : baseUrl;
-    axios[method](url, client)
-      .then(resp => {
-        const list = this.getUpdatedList(resp.data);
-        this.setState({ client: initialState.client, list});
-      })
+    if(this.formVerify(client)){
+      const method = client.id ? 'put' : 'post';
+      const url = client.id ? `${baseUrl}/${client.id}` : baseUrl;
+      axios[method](url, client)
+        .then(resp => {
+          const list = this.getUpdatedList(resp.data);
+          this.setState({ client: initialState.client, list});
+        })
+    }
   }
 
   getUpdatedList(client) {
@@ -68,6 +77,7 @@ export default class ClientCrud extends Component {
             <div className="form-group">
               <label><b>Nome</b></label>
               <input type="text" className="form-control"
+                required
                 name="name"
                 value={this.state.client.name}
                 onChange={e => this.updateField(e)}
@@ -79,6 +89,7 @@ export default class ClientCrud extends Component {
             <div className="form-group">
               <label><b>CNPJ</b></label>
               <input type="text" className="form-control"
+                required
                 name="cnpj"
                 value={this.state.client.cnpj}
                 onChange={e => this.updateField(e)}
@@ -89,7 +100,8 @@ export default class ClientCrud extends Component {
           <div className="col-12 col-md-6">
             <div className="form-group">
               <label><b>E-mail</b></label>
-              <input type="text" className="form-control"
+              <input type="email" className="form-control"
+                required
                 name="email"
                 value={this.state.client.email}
                 onChange={e => this.updateField(e)}
@@ -101,6 +113,7 @@ export default class ClientCrud extends Component {
             <div className="form-group">
               <label><b>Telefone</b></label>
               <input type="text" className="form-control"
+                required
                 name="phone"
                 value={this.state.client.phone}
                 onChange={e => this.updateField(e)}
