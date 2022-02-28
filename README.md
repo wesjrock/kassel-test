@@ -1,6 +1,7 @@
 # Kassel Labs - Frontend Test
 
-# Pré-requisitos
+PRÉ-REQUISITOS
+--------------------------------------------------
 1. Para utilizar o comando npm, é necessário ter o nodejs instalado.
 https://nodejs.org/en/download/
 
@@ -13,7 +14,8 @@ $ cd frontend
 $ npm install
 ```
 
-# Executando a aplicação
+EXECUTANDO A APLICAÇÃO
+--------------------------------------------------
 ```
 Terminal (instância 1):
 $ cd backend
@@ -23,3 +25,5 @@ Terminal (instância 2):
 $ cd frontend
 $ npm run start
 ```
+
+![Screenshot](img.png)

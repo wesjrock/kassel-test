@@ -24,12 +24,7 @@ export default class VideoCrud extends Component {
     axios(baseUrl).then(resp => {
       this.setState({ list: resp.data })
     })
-    // Consulta ao backend para saber a quantidade de clientes
-    axios(clientsUrl).then(resp => {
-      console.log(Object.keys(resp.data).length);
-    })
   }
-
 
   clear() {
     this.setState( { video: initialState.video} )
@@ -67,7 +62,6 @@ export default class VideoCrud extends Component {
     this.setState({ video });
   }
 
-  // TODO: Associação com cliente
   renderForm() {
     return(
       <div className="form">
@@ -111,7 +105,7 @@ export default class VideoCrud extends Component {
           <div className="col-12 col-md-6">
             <div className="form-group">
               <label><b>Data de Entrega</b></label>
-              <input type="text" className="form-control"
+              <input type="date" className="form-control"
                 required
                 name="delivery_date"
                 value={this.state.video.delivery_date}
@@ -127,9 +121,9 @@ export default class VideoCrud extends Component {
                 Cliente
               </button>
               <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a className="dropdown-item" href="#">Não Implementado</a>
+                <a className="dropdown-item" href="#">Não Implementado</a>
+                <a className="dropdown-item" href="#">Não Implementado</a>
               </div>
             </div>
           </div>            
@@ -171,7 +165,7 @@ export default class VideoCrud extends Component {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Title</th>
+            <th>Título</th>
             <th>Briefing</th>
             <th>Preço</th>
             <th>Data de Entrega</th>
@@ -197,7 +191,6 @@ export default class VideoCrud extends Component {
           <td>{video.price}</td>
           <td>{video.delivery_date}</td>
           <td>{video.status}</td>
-          {/* <td>{video.client_id}</td> */}
           <td>
             <button className="btn btn-warning"
               onClick={() => this.load(video)}>
@@ -213,7 +206,6 @@ export default class VideoCrud extends Component {
     })
   }
 
-  // TODO: Conditional Rendering: só renderizar componente de video se houver clientes
   render() {
     return(
       <Main {...headerProps} >
