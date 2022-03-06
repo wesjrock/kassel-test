@@ -33,6 +33,33 @@
       "status": "Pendente",
       "client_id": "",
       "id": 2
+    },
+    {
+      "title": "Friday the 13th",
+      "briefing": "bla bla bla",
+      "price": "R$ 200",
+      "delivery_date": "2023-04-24",
+      "status": "Concluído",
+      "client_id": "",
+      "id": 3
+    },
+    {
+      "title": "Chucky",
+      "briefing": "bla bla bla bla",
+      "price": "R$ 200",
+      "delivery_date": "2023-05-27",
+      "status": "Concluído",
+      "client_id": "",
+      "id": 4
+    },
+    {
+      "title": "Matrix 5",
+      "briefing": "bla bla bla bla bla",
+      "price": "R$ 200",
+      "delivery_date": "2024-03-22",
+      "status": "Em Andamento",
+      "client_id": "",
+      "id": 5
     }
   ]
 }
